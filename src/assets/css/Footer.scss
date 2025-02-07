@@ -1,0 +1,15 @@
+footer {
+    justify-content: center;
+    display: block;
+    text-align: center;
+    padding: 20px;
+    background-color: #000000;
+    align-self: end;
+    height: max-content;
+
+    a {
+        cursor: pointer;
+        display: block;
+        padding: 20px;
+    }
+}

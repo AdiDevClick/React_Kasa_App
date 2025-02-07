@@ -1,0 +1,58 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #FFFFFF;
+    --card-bg-color: #F6F6F6;
+    --main-font-color: #FF6060;
+
+    --grid-gap: 50px;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+#root {
+    display: grid;
+    gap: var(--grid-gap);
+    min-height: 100vh;
+    grid-template-rows: min-content 1fr min-content;
+}
+
+.main-container {
+    $max-width-content: 1440px;
+    $width-crop: 45px;
+
+    width: min($max-width-content, calc(100% - ($width-crop * 2)));
+    margin-inline: auto;
+    display: grid;
+    grid-template-rows: min-content;
+    gap: var(--grid-gap);
+
+    height: max-content;
+    // margin-bottom: var(--grid-gap);
+}
+
+main {
+    display: grid;
+    gap: var(--grid-gap);
+}
