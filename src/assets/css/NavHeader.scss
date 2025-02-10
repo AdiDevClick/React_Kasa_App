@@ -1,7 +1,7 @@
+/* Navbar Header */
 nav {
     display: flex;
     justify-content: space-between;
-    // max-height: 68px;
     padding-top: 40px;
 
     a,
@@ -9,10 +9,7 @@ nav {
     svg {
         color: #000000;
         cursor: pointer;
-
-        // &:is(a):hover:not(:has(.header-menu__logo)) {
-        //     border-bottom: 1px solid grey;
-        // }
+        height: 100%;
     }
 
     .header-menu__logo {
@@ -28,15 +25,10 @@ nav {
         display: flex;
         gap: 50px;
         align-items: center;
+        min-height: 68px;
 
         a:is(.active, :focus, :active, :hover) {
             border-bottom: 1px solid grey;
         }
-
-        // li:is(.active, :focus, :active, :hover) {
-        //     a {
-        //         border-bottom: 1px solid grey;
-        //     }
-        // }
     }
 }
