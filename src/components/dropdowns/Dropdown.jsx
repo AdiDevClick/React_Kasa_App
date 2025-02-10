@@ -5,10 +5,12 @@ import arrow from "assets/images/dropdown-arrow.svg";
 
 /**
  * Render un dropdown avec un bouton sur la droite
- * @param {string} title - Titre du dropdown
- * @param {string|Array} text - Texte du dropdown
+ * @param {object} param0
+ * @param {string} param0.title - Titre du dropdown
+ * @param {string|Array} param0.text - Texte du dropdown
  * @returns {JSX.Element}
  */
+
 export function RenderDropDown({ title, text }) {
     const [clicked, isClicked] = useState(false);
 
