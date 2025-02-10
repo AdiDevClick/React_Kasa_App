@@ -1,16 +1,12 @@
-// import logo from "assets/images/LOGO.png";
-
 import { NavLink } from "react-router";
 
+/**
+ * Render le logo de l'app.
+ * Un lien vers la page d'accueil sera créé.
+ * @returns {JSX.Element}
+ */
 export function RenderLogo() {
     return (
-        // <a href="#">
-        //     <img
-        //         className="header-menu__logo"
-        //         src={logo}
-        //         alt="Logo du site Kasa"
-        //     />
-        // </a>
         <NavLink to="/">
             <svg
                 className="header-menu__logo"
