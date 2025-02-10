@@ -4,7 +4,8 @@ import "assets/css/Stars.scss";
 
 /**
  * Render le rating utilisateur sur 5
- * @param {number|string} rating
+ * @param {object} param0
+ * @param {number|string} param0.rating
  * @returns
  */
 export function RenderRating({ rating }) {
