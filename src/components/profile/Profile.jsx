@@ -2,8 +2,9 @@ import PropTypes from "prop-types";
 
 /**
  * Render un nom d'utilisateur et son image
- * @param {string} name - Le nom de l'utilisateur
- * @param {string} picture  - L'image de l'utilisateur
+ * @param {object} param0
+ * @param {string} param0.name - Le nom de l'utilisateur
+ * @param {string} param0.picture  - L'image de l'utilisateur
  * @returns
  */
 export function RenderProfile({ name, picture }) {
