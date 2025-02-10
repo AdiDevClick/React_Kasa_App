@@ -24,13 +24,6 @@ body {
     scroll-behavior: smooth;
 }
 
-img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-
 #root {
     display: grid;
     gap: var(--grid-gap);
@@ -38,6 +31,14 @@ img {
     grid-template-rows: min-content 1fr min-content;
 }
 
+/* Generic Content */
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Main Content */
 .main-container {
     $max-width-content: 1440px;
     $width-crop: 45px;
@@ -48,7 +49,7 @@ img {
     grid-template-rows: min-content;
     gap: var(--grid-gap);
 
-    height: max-content;
+    // height: max-content;
     // margin-bottom: var(--grid-gap);
 }
 
