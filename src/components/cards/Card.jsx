@@ -3,8 +3,9 @@ import { Link } from "react-router";
 
 /**
  * Crer un élément ".card" à partir d'un objet
- * @param {string} className - Le nom de la class CSS
- * @param {object} datas
+ * @param {object} param0
+ * @param {string} param0.className - Le nom de la class CSS
+ * @param {array} param0.datas - Un Array d'objets
  * @returns {JSX.Element}
  */
 export function RenderCard({ className, datas }) {
@@ -17,12 +18,6 @@ export function RenderCard({ className, datas }) {
                         <figcaption>{element.title}</figcaption>
                     </figure>
                 </Link>
-                // <a href={"#"} key={element.id}>
-                //     <figure className="card">
-                //         <img src={element.cover} alt={element.title} />
-                //         <figcaption>{element.title}</figcaption>
-                //     </figure>
-                // </a>
             ))}
         </section>
     );
