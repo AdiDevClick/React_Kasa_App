@@ -3,7 +3,8 @@ import { Error404 } from "./404/Error404.jsx";
 import "assets/css/404.scss";
 
 /**
- * Display une erreur 404 si la route est mauvaise
+ * Display une erreur 404 si la route est mauvaise.
+ * Par défaut, display un message générique.
  * @returns {JSX.Element}
  */
 export function PageError() {
