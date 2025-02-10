@@ -1,0 +1,11 @@
+/* Stars Componant */
+.stars_container {
+    display: flex;
+    gap: 10px;
+
+    .star {
+        &.active path {
+            fill: var(--main-font-color);
+        }
+    }
+}
