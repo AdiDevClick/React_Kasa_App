@@ -1,3 +1,6 @@
+$padding: 10%;
+
+/* Individual appartment Cards */
 .card-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -17,13 +20,14 @@
 
         figcaption {
             position: absolute;
-            bottom: 10%;
-            left: 10%;
+            bottom: $padding;
+            left: $padding;
             font-size: 18px;
             font-weight: 700;
             color: white;
             background-color: rgba(0, 0, 0, 0.507);
             padding: 5px;
+            max-width: calc(100% - ($padding * 2));
         }
 
         &:hover {
