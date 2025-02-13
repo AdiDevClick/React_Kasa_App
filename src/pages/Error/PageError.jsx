@@ -9,7 +9,6 @@ import "assets/css/404.scss";
  */
 export function PageError() {
     const error = useRouteError();
-    console.log(error);
     if (error.status === 404) return <Error404 />;
 
     return (
