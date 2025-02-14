@@ -8,7 +8,7 @@ import "assets/css/Stars.scss";
  * @param {number|string} param0.rating
  * @returns
  */
-export function RenderRating({ rating }) {
+export function Rating({ rating }) {
     const range = 5;
     const stars = [];
     for (let i = 1; i <= range; i++) {
@@ -33,7 +33,7 @@ export function RenderRating({ rating }) {
     return <div className="stars_container">{stars}</div>;
 }
 
-RenderRating.propTypes = {
+Rating.propTypes = {
     rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
         .isRequired,
 };
