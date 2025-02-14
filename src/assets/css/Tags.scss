@@ -1,0 +1,15 @@
+/* TAGS  */
+.tags_container {
+    grid-column: 1 / 2;
+    display: flex;
+    max-height: 25px;
+    gap: 10px;
+    align-items: center;
+
+    .tag {
+        border-radius: 15px;
+        padding: 5px 30px;
+        background-color: var(--main-font-color);
+        font-weight: var(--font-weight-large);
+    }
+}
