@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 /* Navbar Header */
 nav {
     display: flex;
@@ -29,6 +31,22 @@ nav {
 
         a:is(.active, :focus, :active, :hover) {
             border-bottom: 1px solid grey;
+        }
+    }
+
+    @include for-size(mobile) {
+        svg {
+            max-height: 50px;
+        }
+
+        a {
+            font-size: var(--fs-very-small);
+            align-content: center;
+            text-transform: uppercase;
+        }
+
+        ul {
+            gap: 20px;
         }
     }
 }
