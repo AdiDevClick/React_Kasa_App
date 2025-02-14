@@ -5,9 +5,16 @@ import { NavLink } from "react-router";
  * Un lien vers la page d'accueil sera créé.
  * @returns {JSX.Element}
  */
-export function RenderLogo() {
+export function Logo() {
     return (
-        <NavLink to="/">
+        <NavLink
+            aria-labelledby="home-logo"
+            style={{ color: "transparent" }}
+            to="/"
+        >
+            <span style={{ display: "none" }} id="home-logo" aria-hidden="true">
+                Home
+            </span>
             <svg
                 className="header-menu__logo"
                 width="123"
