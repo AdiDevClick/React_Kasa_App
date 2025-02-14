@@ -34,7 +34,7 @@ nav {
         }
     }
 
-    @include for-size(mobile) {
+    @include for-size(tablet) {
         svg {
             max-height: 50px;
         }
