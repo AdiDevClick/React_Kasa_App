@@ -3,6 +3,7 @@ import { Card } from "../cards/Card.jsx";
 import { Banner } from "../headers/page-header/Banner.jsx";
 import "assets/css/Card.scss";
 import headerImg from "assets/images/rivage-S.png";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle.jsx";
 
 /**
  * Render la page Accueil -
@@ -11,6 +12,7 @@ import headerImg from "assets/images/rivage-S.png";
  * @returns
  */
 export function RenderMain({ datas }) {
+    useDocumentTitle("Chez vous, partout et ailleurs");
     return (
         <>
             <Banner
