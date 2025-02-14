@@ -1,0 +1,26 @@
+/* Profile picture + Name on the left */
+.profile_container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-end;
+
+    .profile {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        &__name {
+            color: var(--main-font-color);
+            font-size: var(--fs-regular);
+            inline-size: min-content;
+            text-align: end;
+        }
+
+        &__img {
+            width: 64px;
+            border-radius: 50%;
+            aspect-ratio: 1;
+        }
+    }
+}
