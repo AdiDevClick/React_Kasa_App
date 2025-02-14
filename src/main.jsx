@@ -15,7 +15,7 @@ import { Footer } from "./components/footer/Footer.jsx";
 import { RenderAboutUs } from "./pages/About/About.jsx";
 import { RenderMain } from "./components/main/Main.jsx";
 import datas from "./data/datas.json";
-import { Room } from "./pages/Logement/Room.jsx";
+import { RenderRoom } from "./pages/Logement/Room.jsx";
 import { useActivePage } from "./hooks/useActivePage.jsx";
 
 // const body = document.querySelector("body");
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
                 path: ":id",
                 element: (
                     <App>
-                        <Room activeRoom={useActivePage} />
+                        <RenderRoom activeRoom={useActivePage} />
                     </App>
                 ),
             },
