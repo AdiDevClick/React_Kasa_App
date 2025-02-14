@@ -1,3 +1,5 @@
+@use './mixins' as *;
+
 /* Dropdown Component */
 .dropdowns-container {
     display: flex;
@@ -9,7 +11,7 @@
     flex-direction: column;
 
     .dropdown {
-        .dropdown_container {
+        &_container {
             cursor: pointer;
             z-index: 1;
             position: relative;
@@ -17,48 +19,74 @@
             display: grid;
             grid-template-columns: 1fr max-content;
             background: var(--main-font-color);
-            padding: 15px 20px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 10px;
 
             &.open.closed {
-                .dropdown__btn {
+                &__btn {
                     transform: rotate(180deg);
                 }
             }
-
-            .dropdown__title {
-                grid-column: 1;
-                grid-row: 1;
-                font-size: 24px;
-                font-weight: 700;
-            }
-
-            .dropdown__btn {
-                place-self: center;
-                max-height: 15px;
-                grid-column: 2;
-                grid-row: 1;
-                transition: transform 0.3s ease;
-            }
         }
 
-        .dropdown__text {
+        &__title {
+            grid-column: 1;
+            grid-row: 1;
+            font-size: var(--fs-medium);
+            font-weight: var(--font-weight-large);
+        }
+
+        &__btn {
+            place-self: center;
+            max-height: 15px;
+            grid-column: 2;
+            grid-row: 1;
+            transition: transform 0.3s ease;
+        }
+
+        span {
+            position: relative;
+            top: -10px;
+        }
+
+        &__text {
             grid-column: 1/2;
             grid-row: 2;
             background: var(--card-bg-color);
             color: black;
-            padding: 15px 15px 0 15px;
+            padding: 15px 25px 0 25px;
             opacity: 1;
             transition: opacity 0.3s ease, transform 0.3s ease;
             transform: translate3d(0, 0, 0);
+            font-weight: 400;
+
+            &:first-child {
+                padding-top: 25px
+            }
 
             &:last-child {
                 padding-bottom: 15px;
+                border-bottom-right-radius: 10px;
+                border-bottom-left-radius: 10px;
             }
 
             @starting-style {
                 opacity: 0;
                 transform: translate3d(0px, -50px, 0);
+            }
+        }
+    }
+
+    @include for-size(tablet) {
+        width: 100%;
+
+        .dropdown {
+            &_container {
+                padding: 10px 20px;
+            }
+
+            &__title {
+                font-size: var(--fs-regular);
             }
         }
     }
