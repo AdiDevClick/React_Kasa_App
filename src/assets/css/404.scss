@@ -1,3 +1,6 @@
+@use 'mixins' as *;
+
+/* ERROR PAGE */
 .error_404 {
     color: var(--main-font-color);
     place-items: center;
@@ -5,20 +8,35 @@
     height: 100%;
 
     .error__title {
-        font-weight: 700;
+        font-weight: var(--font-weight-large);
         font-size: 288px;
     }
 
     .error__text {
-        font-size: 36px;
-        font-weight: 500;
+        font-size: var(--fs-big);
         height: max-content;
+        text-align: center;
     }
 
     .error__link {
         cursor: pointer;
         color: #000000;
-        font-size: 16px;
+        font-size: var(--fs-regular);
         border-bottom: 1px black solid;
+    }
+
+    /* Styles pour les petits écrans */
+    @include for-size(tablet) {
+        .error__title {
+            font-size: 96px;
+        }
+
+        .error__text {
+            font-size: var(--fs-regular);
+        }
+
+        .error__link {
+            font-size: var(--fs-small);
+        }
     }
 }
