@@ -7,6 +7,7 @@ import { useDynamicStyles } from "../../hooks/useDynamicStyles.jsx";
 import { useFetch } from "../../hooks/useFetch.jsx";
 import { RenderCarousel } from "../../components/carousel/Carousel.jsx";
 import { Tags } from "../../components/tags/Tags.jsx";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle.jsx";
 
 export function RenderRoom() {
     const stylesToLoad = [
@@ -34,6 +35,7 @@ export function RenderRoom() {
         }
     }
     // END TO DELETE
+    useDocumentTitle(datas.title);
 
     useDynamicStyles(stylesToLoad);
     return (
