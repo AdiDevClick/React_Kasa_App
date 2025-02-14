@@ -5,7 +5,7 @@ import { Profile } from "../../components/profile/Profile.jsx";
 import { Rating } from "../../components/ratings/Ratings.jsx";
 import { useDynamicStyles } from "../../hooks/useDynamicStyles.jsx";
 import { useFetch } from "../../hooks/useFetch.jsx";
-import { Carousel } from "../../components/carousel/Carousel.jsx";
+import { RenderCarousel } from "../../components/carousel/Carousel.jsx";
 import { Tags } from "../../components/tags/Tags.jsx";
 
 export function RenderRoom() {
@@ -42,7 +42,7 @@ export function RenderRoom() {
             {(errors || !datas) && <Navigate to={"/error/page"} replace />}
             {!isLoading && datas && (
                 <section className="room_header carousel">
-                    <Carousel images={datas.pictures} infinite={true} />
+                    <RenderCarousel images={datas.pictures} infinite={true} />
                 </section>
             )}
             {!isLoading && datas && (
