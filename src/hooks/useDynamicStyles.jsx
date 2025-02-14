@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import { createElement } from "../assets/functions/dom.js";
 
+/**
+ * Importe des fichiers CSS / SCSS puis les enlève dynamiquement du DOM
+ * quand le composant React qui l'appelle est démonté -
+ * @param {[string]} paths - Un array de strings
+ */
 export function useDynamicStyles(paths) {
     // const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
