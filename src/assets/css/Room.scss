@@ -1,0 +1,105 @@
+@use './mixins.scss' as *;
+
+/* Room modifiers */
+.main-container:has(.room) {
+    grid-template-rows: minmax(415px, max-content) max-content;
+
+    .room {
+        display: grid;
+        grid-template-columns: 1fr max-content;
+        gap: var(--grid-gap);
+
+        &__header-container {
+            grid-column: 1 / 2;
+            grid-row: 1;
+            position: relative;
+            display: grid;
+            grid-template-rows: 1fr 10px max-content 20px 1fr;
+
+            .tags_container {
+                // grid-row: 1 / 1;
+                position: absolute;
+                grid-row: 5;
+                width: calc(100vw - (var(--grid-gap) * 2));
+                flex-wrap: wrap !important;
+                max-width: 1440px;
+            }
+        }
+
+        &__title {
+            grid-row: 1;
+            font-size: var(--fs-big);
+            color: var(--main-font-color);
+        }
+
+        &__subtitle {
+            grid-row: 3;
+            // margin-top: -20px;
+            color: black;
+            font-size: var(--fs-regular);
+        }
+
+        &__profile {
+            grid-column: 2 / 3;
+            grid-row: 1;
+        }
+    }
+
+    .dropdowns-container {
+        grid-column: 1 / 3;
+        width: 100%;
+        margin-top: unset;
+        flex-direction: row;
+
+        .dropdown {
+            width: 100%;
+        }
+    }
+
+    @include for-size(tablet) {
+        .room {
+            grid-template-columns: 1fr;
+
+            .tags_container {
+                width: unset;
+                position: relative;
+                height: fit-content;
+                max-height: unset;
+
+                .tag {
+                    border-radius: 10px;
+                    padding: 2px 30px;
+                    font-size: var(--fs-small);
+                }
+            }
+
+            &__header-container {
+                grid-column: auto;
+                grid-row: 1;
+
+                grid-template-rows: 1fr 10px max-content 20px max-content;
+            }
+
+            &__profile {
+                grid-column: auto;
+                grid-row: 2;
+                flex-direction: row-reverse;
+                align-items: center;
+                justify-content: space-between;
+
+                p {
+                    font-size: var(--fs-small);
+                }
+
+                svg {
+                    width: 20px;
+                }
+            }
+        }
+
+        .dropdowns-container {
+            grid-column: auto;
+            flex-direction: column;
+        }
+    }
+}
