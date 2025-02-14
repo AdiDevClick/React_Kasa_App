@@ -2,6 +2,7 @@ import { Banner } from "../../components/headers/page-header/Banner.jsx";
 import image from "assets/images/foret.png";
 import App from "../Home/App.jsx";
 import { DropDown } from "../../components/dropdowns/Dropdown.jsx";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle.jsx";
 
 const texts = {
     Fiabilité:
@@ -19,6 +20,7 @@ const texts = {
  * @returns {JSX.Element}
  */
 export function RenderAboutUs() {
+    useDocumentTitle("A propos de Kasa");
     return (
         <App>
             <Banner img={image} alt={"forêt"} />
