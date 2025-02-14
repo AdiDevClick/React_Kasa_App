@@ -15,13 +15,13 @@ import PropTypes from "prop-types";
 function App({ children }) {
     return (
         <>
-            <div className="main-container">{children}</div>
+            <main className="main-container">{children}</main>
         </>
     );
 }
 
 App.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.any.isRequired,
 };
 
 export default App;
