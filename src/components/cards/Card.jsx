@@ -8,7 +8,7 @@ import { Link } from "react-router";
  * @param {array} param0.datas - Un Array d'objets
  * @returns {JSX.Element}
  */
-export function RenderCard({ className, datas }) {
+export function Card({ className, datas }) {
     return (
         <section className={className}>
             {datas.map((element) => (
@@ -23,7 +23,7 @@ export function RenderCard({ className, datas }) {
     );
 }
 
-RenderCard.propTypes = {
+Card.propTypes = {
     className: PropTypes.string.isRequired,
     datas: PropTypes.arrayOf(
         PropTypes.shape({
