@@ -11,7 +11,7 @@ import arrow from "assets/images/dropdown-arrow.svg";
  * @returns {JSX.Element}
  */
 
-export function RenderDropDown({ title, text }) {
+export function DropDown({ title, text }) {
     const [clicked, isClicked] = useState(false);
 
     const handleClick = (e, bool) => {
@@ -32,7 +32,11 @@ export function RenderDropDown({ title, text }) {
             >
                 <h2 className="dropdown__title">{title}</h2>
                 <button aria-expanded={clicked} aria-controls={id}>
-                    <img className="dropdown__btn" src={arrow} />
+                    <img
+                        alt="icône flêche du bouton"
+                        className="dropdown__btn"
+                        src={arrow}
+                    />
                 </button>
             </div>
             {clicked && (
@@ -52,7 +56,7 @@ export function RenderDropDown({ title, text }) {
     );
 }
 
-RenderDropDown.propTypes = {
+DropDown.propTypes = {
     title: PropTypes.string.isRequired,
     text: PropTypes.oneOfType([
         PropTypes.string,
