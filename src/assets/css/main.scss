@@ -1,7 +1,9 @@
+@use './mixins' as *;
+
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
-    font-weight: 400;
+    font-weight: 500;
 
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
@@ -11,11 +13,20 @@
 
     --grid-gap: 50px;
 
+    --fs-big: 36px;
+    --fs-medium: 20px;
+    --fs-regular: 18px;
+    --fs-small: 14px;
+    --fs-very-small: 12px;
+
+    --font-weight-large: 700;
+
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 
 html,
 body {
@@ -29,6 +40,7 @@ body {
     gap: var(--grid-gap);
     min-height: 100vh;
     grid-template-rows: min-content 1fr min-content;
+    overflow: hidden;
 }
 
 /* Generic Content */
@@ -42,8 +54,15 @@ img {
 .main-container {
     $max-width-content: 1440px;
     $width-crop: 45px;
+    $width-crop-tablet: 20px;
 
-    width: min($max-width-content, calc(100% - ($width-crop * 2)));
+    @include apply-width-crop($max-width-content, $width-crop);
+
+    @include for-size(tablet) {
+        @include apply-width-crop($max-width-content, $width-crop-tablet);
+    }
+
+    // width: min($max-width-content, calc(100% - ($width-crop * 2)));
     margin-inline: auto;
     display: grid;
     grid-template-rows: min-content;
