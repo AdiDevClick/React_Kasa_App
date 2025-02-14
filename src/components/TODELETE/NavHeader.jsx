@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { RenderLogo } from "../headers/nav/Logo.jsx";
+import { Logo } from "../headers/nav/Logo.jsx";
 import { RenderNavList } from "./NavList.jsx";
 import "assets/css/NavHeader.scss";
 import { navReducer } from "../../assets/hooks/reducer/reducer.js";
@@ -19,15 +19,12 @@ const listItems = [
     },
 ];
 
-export function RenderNavHeader() {
+export function NavHeader() {
     const [state, dispatch] = useReducer(navReducer, {
         listItems,
     });
 
     const handleClick = (item) => {
-        // item = e;
-        console.log(item);
-
         if (!item.active) {
             state.listItems.map((item) =>
                 item.element.classList.remove("active")
@@ -38,12 +35,11 @@ export function RenderNavHeader() {
             });
         }
     };
-    console.log("render Nav Header");
 
     return (
         <header>
             <nav>
-                <RenderLogo />
+                <Logo />
                 <ul className="header-menu__list">
                     {state.listItems.map((item) => (
                         <RenderNavList
