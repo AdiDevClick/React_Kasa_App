@@ -1,7 +1,7 @@
-import { RenderHeader } from "../../components/headers/page-header/Header.jsx";
-import image from "assets/images/foret-S.png";
+import { Banner } from "../../components/headers/page-header/Banner.jsx";
+import image from "assets/images/foret.png";
 import App from "../Home/App.jsx";
-import { RenderDropDown } from "../../components/dropdowns/Dropdown.jsx";
+import { DropDown } from "../../components/dropdowns/Dropdown.jsx";
 
 const texts = {
     Fiabilité:
@@ -21,10 +21,10 @@ const texts = {
 export function RenderAboutUs() {
     return (
         <App>
-            <RenderHeader img={image} alt={"forêt"} text={false} />
+            <Banner img={image} alt={"forêt"} />
             <div className="dropdowns-container">
                 {Object.entries(texts).map(([key, value]) => (
-                    <RenderDropDown key={key} title={key} text={value} />
+                    <DropDown key={key} title={key} text={value} />
                 ))}
             </div>
         </App>
