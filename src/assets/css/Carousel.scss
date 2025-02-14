@@ -1,0 +1,74 @@
+@use "./mixins.scss" as *;
+
+/* CAROUSEL LAYOUT */
+.carousel {
+    position: relative;
+    justify-content: center;
+    max-height: 415px;
+    overflow: hidden;
+    border-radius: 20px;
+
+    &__container {
+        transition: transform .3s;
+        transform: translate3d(0, 0, 0);
+
+        figure {
+            width: 25%;
+            float: left !important;
+        }
+
+        &::after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+    }
+
+    &__prev,
+    &__next {
+        position: absolute;
+        width: 80px;
+        height: 100%;
+        top: 0;
+        align-content: center;
+        text-align: center;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.342);
+        }
+
+        svg {
+            transition: transform 0.3s ease, scale 0.3s ease;
+
+            &:hover {
+                scale: 1.05;
+            }
+
+            &:active {
+                scale: 0.8;
+            }
+        }
+    }
+
+    &__prev {
+        left: 0
+    }
+
+    &__next {
+        right: 0;
+    }
+
+    &__pagination {
+        text-align: center;
+        position: relative;
+        bottom: 10%;
+        font-size: var(--fs-regular);
+    }
+
+    @include for-size(tablet) {
+        svg {
+            width: 20px;
+        }
+    }
+}
