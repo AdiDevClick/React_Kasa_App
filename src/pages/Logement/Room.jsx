@@ -11,6 +11,7 @@ import 'assets/css/Tags.scss';
 import 'assets/css/Profile.scss';
 import 'assets/css/Room.scss';
 import 'assets/css/Carousel.scss';
+import 'assets/css/Loader.scss';
 import { useEffect, useId, useState } from 'react';
 
 const dropdownTitles = {
@@ -68,7 +69,10 @@ export function Room() {
     if (isLoading && !errors) {
         return (
             <>
-                <div style={{ color: 'black' }}>Chargement...</div>
+                <div
+                    className="loader"
+                    style={{ placeSelf: 'center', color: 'orange' }}
+                ></div>
             </>
         );
     }
