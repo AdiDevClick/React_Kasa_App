@@ -1,47 +1,48 @@
-import { createRoot } from "react-dom/client";
-import "assets/css/index.css";
-import "assets/css/NavHeader.scss";
-import App from "./pages/Home/App.jsx";
-import React from "react";
+import { createRoot } from 'react-dom/client';
+import 'assets/css/NavHeader.scss';
+import App from './pages/App.jsx';
+import React from 'react';
 import {
     createBrowserRouter,
     NavLink,
     Outlet,
     RouterProvider,
-} from "react-router";
-import { Logo } from "./components/headers/nav/Logo.jsx";
-import { PageError } from "./pages/Error/PageError.jsx";
-import { Footer } from "./components/footer/Footer.jsx";
-import { RenderAboutUs } from "./pages/About/About.jsx";
-import { RenderMain } from "./components/main/Main.jsx";
-import datas from "./data/datas.json";
-import { RenderRoom } from "./pages/Logement/Room.jsx";
-import { useActivePage } from "./hooks/useActivePage.jsx";
+} from 'react-router';
+import { Logo } from './components/headers/nav/Logo.jsx';
+import { PageError } from './pages/Error/PageError.jsx';
+import { Footer } from './components/footer/Footer.jsx';
+import { AboutUs } from './pages/About/About.jsx';
+import { Home } from './pages/Home/Home.jsx';
+import datas from './data/datas.json';
+import { Room } from './pages/Logement/Room.jsx';
 
-// const body = document.querySelector("body");
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: '/',
         element: <Root />,
-        errorElement: <Root contentType={"error"} />,
+        errorElement: <Root contentType={'error'} />,
         children: [
             {
                 index: true,
                 element: (
                     <App>
-                        <RenderMain datas={datas} />
+                        <Home datas={datas} />
                     </App>
                 ),
             },
             {
-                path: "a-propos",
-                element: <RenderAboutUs />,
-            },
-            {
-                path: ":id",
+                path: 'a-propos',
                 element: (
                     <App>
-                        <RenderRoom activeRoom={useActivePage} />
+                        <AboutUs />
+                    </App>
+                ),
+            },
+            {
+                path: ':id',
+                element: (
+                    <App>
+                        <Room />
                     </App>
                 ),
             },
@@ -49,23 +50,22 @@ const router = createBrowserRouter([
     },
 ]);
 
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        {/* <BrowserRouter>
-            <App />
-        </BrowserRouter> */}
         <RouterProvider router={router} future={{ v7_startTransition: true }} />
     </React.StrictMode>
 );
 
 /**
- *
+ * Layout de la page -
+ * App.JSX est le <main> container et est utilisé pour matérialiser le Outlet -
+ * Si une erreur est trouvée, il sera remplacé par l'erreur -
  * @param {[{}]} contentType
- * @returns
+ * @returns {JSX.Element}
  */
 export function Root(contentType) {
     let errorContent = false;
-    if (contentType.contentType === "error") {
+    if (contentType.contentType === 'error') {
         errorContent = true;
     }
     return (
