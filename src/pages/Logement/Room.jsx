@@ -101,7 +101,7 @@ export function Room() {
                         <TagsContainer datas={fetchedData.tags} />
                     </div>
                     <div className="dropdowns-container">
-                        {drawerItems.map((item, index) => (
+                        {drawerItems.map((item) => (
                             <DropDown key={item.id} item={item} />
                         ))}
                     </div>
