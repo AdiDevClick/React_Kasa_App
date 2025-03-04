@@ -1,9 +1,8 @@
 // import "assets/css/resetFirefox.css";
 // import "assets/css/resetChromium.css";
-import "assets/css/reset.css";
-import "assets/css/App.css";
-import "assets/css/main.scss";
-import PropTypes from "prop-types";
+import 'assets/css/reset.css';
+import 'assets/css/main.scss';
+import PropTypes from 'prop-types';
 
 /**
  * Render le contenu principal de l'App
