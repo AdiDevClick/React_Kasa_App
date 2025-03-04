@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 /**
  * Défini le titre du document et
@@ -8,7 +8,7 @@ import { useEffect } from "react";
 export function useDocumentTitle(docTitle) {
     useEffect(() => {
         const oldTitle = document.title;
-        document.title = "Kasa - " + docTitle;
+        document.title = 'Kasa - ' + docTitle;
 
         return () => {
             document.title = oldTitle;
