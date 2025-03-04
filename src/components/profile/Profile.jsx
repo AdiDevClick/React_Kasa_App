@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 /**
- * Render un nom d'utilisateur et son image
+ * Affiche le nom d'utilisateur et son image
  * @param {object} param0
  * @param {string} param0.name - Le nom de l'utilisateur
  * @param {string} param0.picture  - L'image de l'utilisateur
- * @returns
+ * @returns {JSX.Element}
  */
 export function Profile({ name, picture }) {
     return (
