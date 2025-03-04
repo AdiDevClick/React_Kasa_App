@@ -1,72 +1,109 @@
-import { Navigate, useParams } from "react-router";
-import JSONDatas from "../../data/datas.json";
-import { DropDown } from "../../components/dropdowns/Dropdown.jsx";
-import { Profile } from "../../components/profile/Profile.jsx";
-import { Rating } from "../../components/ratings/Ratings.jsx";
-import { useDynamicStyles } from "../../hooks/useDynamicStyles.jsx";
-import { useFetch } from "../../hooks/useFetch.jsx";
-import { RenderCarousel } from "../../components/carousel/Carousel.jsx";
-import { Tags } from "../../components/tags/Tags.jsx";
-import { useDocumentTitle } from "../../hooks/useDocumentTitle.jsx";
+import { Navigate, useParams } from 'react-router';
+import JSONDatas from '../../data/datas.json';
+import { DropDown } from '../../components/dropdowns/Dropdown.jsx';
+import { Profile } from '../../components/profile/Profile.jsx';
+import { Rating } from '../../components/ratings/Ratings.jsx';
+import { useFetch } from '../../hooks/useFetch.jsx';
+import { RenderCarousel } from '../../components/carousel/Carousel.jsx';
+import { Tags } from '../../components/tags/Tags.jsx';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle.jsx';
+import 'assets/css/Tags.scss';
+import 'assets/css/Profile.scss';
+import 'assets/css/Room.scss';
+import 'assets/css/Carousel.scss';
+import { useEffect, useId, useState } from 'react';
 
-export function RenderRoom() {
-    const stylesToLoad = [
-        "Tags.scss",
-        "Profile.scss",
-        "Room.scss",
-        "Carousel.scss",
-    ];
+const dropdownTitles = {
+    description: 'Description',
+    equipments: 'Equipements',
+};
 
+/**
+ * Affiche la page d'appartements
+ * @returns {JSX.Element}
+ */
+export function Room() {
+    let ids = useId();
     const { id } = useParams();
-
-    // TO REACTIVATE WHEN BACKEND IS UP
-    // const { datas, isLoading, errors } = useFetch(
-    //     "https://jssonplaceholder.typicode.com/todos/id"
+    const filteredData = JSONDatas.filter((room) => room.id === id);
+    // let { filteredData, isLoading, errors } = useFetch(
+    //     'https://jsonplaceholder.typicode.com/todos/1'
     // );
+    const [errors, setErrors] = useState(null);
+    const [isLoading, setLoading] = useState(true);
+    const [fetchedData, setFetchData] = useState(null);
+    const [drawerItems, setDrawerItem] = useState([]);
 
-    // TO DELETE WHEN BACKEND IS UP
-    let { datas, isLoading, errors } = useFetch(
-        "https://jsonplaceholder.typicode.com/todos/"
-    );
-
-    for (const data of JSONDatas) {
-        if (data.id == id) {
-            datas = data;
+    useEffect(() => {
+        if (filteredData[0]) {
+            setFetchData(filteredData[0]);
+            setErrors(false);
+        } else {
+            setFetchData(null);
+            setErrors(true);
         }
-    }
-    // END TO DELETE
-    useDocumentTitle(datas.title);
+    }, []);
 
-    useDynamicStyles(stylesToLoad);
+    useEffect(() => {
+        if (fetchedData) {
+            let i = 0;
+            for (const [item, value] of Object.entries(fetchedData)) {
+                if (dropdownTitles[item]) {
+                    setDrawerItem((prevItems) => [
+                        ...prevItems,
+                        {
+                            id: i <= 5 ? (i += 1) + ids : i,
+                            title: dropdownTitles[item],
+                            text: value,
+                        },
+                    ]);
+                }
+            }
+            setLoading(false);
+        }
+    }, [fetchedData]);
+
+    useDocumentTitle(fetchedData && fetchedData.title);
+
+    if (isLoading && !errors) {
+        return (
+            <>
+                <div style={{ color: 'black' }}>Chargement...</div>
+            </>
+        );
+    }
+
+    if (errors) {
+        return <Navigate to={'/error/page'} replace />;
+    }
+
     return (
         <>
-            {isLoading && <div style={{ color: "black" }}>Chargement...</div>}
-            {(errors || !datas) && <Navigate to={"/error/page"} replace />}
-            {!isLoading && datas && (
+            {!isLoading && fetchedData && (
                 <section className="room_header carousel">
-                    <RenderCarousel images={datas.pictures} infinite={true} />
+                    <RenderCarousel images={fetchedData.pictures} />
                 </section>
             )}
-            {!isLoading && datas && (
+            {!isLoading && fetchedData && (
                 <section className="room">
                     <div className="room__profile profile_container">
                         <Profile
-                            name={datas.host.name}
-                            picture={datas.host.picture}
+                            name={fetchedData.host.name}
+                            picture={fetchedData.host.picture}
                         />
-                        <Rating rating={datas.rating} />
+                        <Rating rating={fetchedData.rating} />
                     </div>
                     <div className="room__header-container">
-                        <h1 className="room__title">{datas.title}</h1>
-                        <h2 className="room__subtitle">{datas.location}</h2>
-                        <Tags datas={datas.tags} />
+                        <h1 className="room__title">{fetchedData.title}</h1>
+                        <h2 className="room__subtitle">
+                            {fetchedData.location}
+                        </h2>
+                        <Tags datas={fetchedData.tags} />
                     </div>
                     <div className="dropdowns-container">
-                        <DropDown
-                            title="Description"
-                            text={datas.description}
-                        />
-                        <DropDown title="Equipement" text={datas.equipments} />
+                        {drawerItems.map((item, index) => (
+                            <DropDown key={item.id} item={item} />
+                        ))}
                     </div>
                 </section>
             )}
