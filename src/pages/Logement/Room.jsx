@@ -5,7 +5,7 @@ import { Profile } from '../../components/profile/Profile.jsx';
 import { Rating } from '../../components/ratings/Ratings.jsx';
 import { useFetch } from '../../hooks/useFetch.jsx';
 import { RenderCarousel } from '../../components/carousel/Carousel.jsx';
-import { Tags } from '../../components/tags/Tags.jsx';
+import { TagsContainer } from '../../components/tags/TagsContainer.jsx';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.jsx';
 import 'assets/css/Tags.scss';
 import 'assets/css/Profile.scss';
@@ -98,7 +98,7 @@ export function Room() {
                         <h2 className="room__subtitle">
                             {fetchedData.location}
                         </h2>
-                        <Tags datas={fetchedData.tags} />
+                        <TagsContainer datas={fetchedData.tags} />
                     </div>
                     <div className="dropdowns-container">
                         {drawerItems.map((item, index) => (
