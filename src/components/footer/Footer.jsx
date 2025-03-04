@@ -1,12 +1,11 @@
-import { Logo } from "../headers/nav/Logo.jsx";
-import "assets/css/Footer.scss";
+import { Logo } from '../headers/nav/Logo.jsx';
+import 'assets/css/Footer.scss';
 
 /**
- * Render le Footer de l'app
+ * Affiche le Footer de l'app
  * @returns {JSX.Element}
  */
 export function Footer() {
-    console.log("Render Footer");
     return (
         <footer>
             <Logo />
