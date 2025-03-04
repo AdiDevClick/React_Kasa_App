@@ -1,7 +1,7 @@
 # Initialisation du Projet 
 - Vite : `npm create vite@latest Kasa-app -- --template react`
-- Sass : `npx install sass`
-- React Router : `npx install react-router`
+- Sass : `npm install sass`
+- React Router : `npm install react-router`
 # Gestion des Routes
 ## Pour modifier le comportement des routes :
 Le `RouterProvider` est utilisé avec utilisation d'un objet pour la gestion des routes. <br>
