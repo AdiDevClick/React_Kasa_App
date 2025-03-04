@@ -1,5 +1,6 @@
-import PropTypes from "prop-types";
-import { useEffect, useRef, useState } from "react";
+import PropTypes from 'prop-types';
+import { useEffect, useRef, useState } from 'react';
+import { CarouselButton } from './CarouselButton.jsx';
 
 /**
  * Crer un Carousel s'adaptant à au conteneur -
@@ -11,66 +12,35 @@ import { useEffect, useRef, useState } from "react";
 export function RenderCarousel({ images, infinite = true }) {
     const [activeSlide, setActiveSlide] = useState(0);
     const carouselRef = useRef();
+
     const prevButton = (
-        <button
-            style={{ color: "transparent" }}
-            type="button"
-            name="prev"
-            onClick={() => handleClick(activeSlide - 1)}
+        <CarouselButton
+            key={'carousel__prev'}
             className="carousel__prev"
+            name="prev"
+            handleClick={() => onHandleClick(activeSlide - 1)}
         >
             Preview
-            <svg
-                width="48"
-                height="80"
-                viewBox="0 0 48 80"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <path
-                    d="M47.04 7.78312L39.92 0.703125L0.359985 40.3031L39.96 79.9031L47.04 72.8231L14.52 40.3031L47.04 7.78312Z"
-                    fill="white"
-                />
-            </svg>
-        </button>
+        </CarouselButton>
     );
 
     const nextButton = (
-        <button
-            style={{ color: "transparent" }}
-            type="button"
-            name="next"
-            onClick={() => handleClick(activeSlide + 1)}
+        <CarouselButton
+            key={'carousel__next'}
             className="carousel__next"
+            name="next"
+            handleClick={() => onHandleClick(activeSlide + 1)}
         >
             Next
-            <svg
-                width="48"
-                height="80"
-                viewBox="0 0 48 80"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <path
-                    d="M0.960022 72.3458L8.04002 79.4258L47.64 39.8258L8.04002 0.22583L0.960022 7.30583L33.48 39.8258L0.960022 72.3458Z"
-                    fill="white"
-                />
-            </svg>
-        </button>
+        </CarouselButton>
     );
-    const setStyle = () => {
-        carouselRef.current.style.width = images.length * 100 + "%";
-        carouselRef.current.childNodes.forEach((element) => {
-            element.style.width = 100 / images.length + "%";
-        });
-    };
 
     /**
      * Manipule l'index pour déplacer le carousel
      * @param {PointerEvent} e - Click event
      * @param {number} index
      */
-    const handleClick = (index) => {
+    const onHandleClick = (index) => {
         if (index < 0) {
             if (infinite) {
                 index = images.length - 1;
@@ -88,35 +58,36 @@ export function RenderCarousel({ images, infinite = true }) {
 
         // Translate
         translateToX(carouselRef, index * (-100 / images.length));
-
-        // Force Repaint
-        carouselRef.offsetHeight;
-        // End of Force Repaint
     };
 
     useEffect(() => {
-        setStyle();
-    });
+        return () => {
+            if (carouselRef.current) {
+                setStyle(carouselRef, images);
+            }
+        };
+    }, []);
 
     return (
         <>
             <div
                 ref={carouselRef}
-                style={{ overflow: "hidden", height: "100%" }}
+                style={{ overflow: 'hidden', height: '100%' }}
                 className="carousel__container"
             >
                 {images.map((img, index) => (
-                    <figure key={index} style={{ height: "100%" }}>
+                    <figure key={index} style={{ height: '100%' }}>
                         <img src={img} alt={index}></img>
                     </figure>
                 ))}
             </div>
-            {!infinite && activeSlide >= 1
-                ? prevButton
-                : infinite && images.length > 1 && prevButton}
-            {!infinite && activeSlide < images.length - 1
-                ? nextButton
-                : infinite && images.length > 1 && nextButton}
+            {displayButtons(
+                infinite,
+                prevButton,
+                nextButton,
+                activeSlide,
+                images
+            )}
             <div className="carousel__pagination">
                 {images.length > 1 && `${activeSlide + 1} / ${images.length}`}
             </div>
@@ -127,11 +98,58 @@ export function RenderCarousel({ images, infinite = true }) {
 /**
  * Translate vers la droite ou la gauche les images du carousel
  * en fonction d'un pourcentage.
- * @param {HTMLElement} ref - Le container des images
+ * @param {HTMLElement} ref - Le container ref des images
  * @param {number} percent
  */
 function translateToX(ref, percent) {
-    ref.current.style.transform = "translate3d(" + percent + "%,  0, 0)";
+    if (ref.current)
+        ref.current.style.transform = 'translate3d(' + percent + '%,  0, 0)';
+}
+
+/**
+ * Calcul de la width du conteneur en fonction du nombre d'images
+ * @param {React.RefObject} carouselRef - Carousel container ref
+ * @param {Array} imagesArr
+ */
+function setStyle(carouselRef, imagesArr) {
+    carouselRef.current.style.width = imagesArr.length * 100 + '%';
+    carouselRef.current.childNodes.forEach((element) => {
+        element.style.width = 100 / imagesArr.length + '%';
+    });
+}
+
+/**
+ * Affiche les boutons prev/next en fonction des options du slider
+ * @param {Boolean} infinite - Infinite option
+ * @param {JSX.Element} prevButton
+ * @param {JSX.Element} nextButton
+ * @param {Number} activeSlide
+ * @param {Array} imagesArray
+ * @returns
+ */
+function displayButtons(
+    infinite,
+    prevButton,
+    nextButton,
+    activeSlide,
+    imagesArray
+) {
+    const activeButtons = [];
+    // No display on first & last images
+    if (!infinite) {
+        if (activeSlide >= 1) {
+            activeButtons.push(prevButton);
+        }
+
+        if (activeSlide < imagesArray.length - 1) {
+            activeButtons.push(nextButton);
+        }
+    }
+    // Display with more than 1 image only
+    if (infinite && imagesArray.length > 1) {
+        activeButtons.push(prevButton, nextButton);
+    }
+    return activeButtons;
 }
 
 RenderCarousel.propTypes = {
