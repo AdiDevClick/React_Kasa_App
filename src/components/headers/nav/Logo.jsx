@@ -1,7 +1,7 @@
-import { NavLink } from "react-router";
+import { NavLink } from 'react-router';
 
 /**
- * Render le logo de l'app.
+ * Affiche le logo de l'app.
  * Un lien vers la page d'accueil sera créé.
  * @returns {JSX.Element}
  */
@@ -9,10 +9,10 @@ export function Logo() {
     return (
         <NavLink
             aria-labelledby="home-logo"
-            style={{ color: "transparent" }}
+            style={{ color: 'transparent' }}
             to="/"
         >
-            <span style={{ display: "none" }} id="home-logo" aria-hidden="true">
+            <span style={{ display: 'none' }} id="home-logo" aria-hidden="true">
                 Home
             </span>
             <svg
