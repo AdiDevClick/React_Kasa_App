@@ -1,7 +1,7 @@
 @use './mixins' as *;
 
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: Montserrat, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 500;
 
@@ -11,12 +11,12 @@
     --card-bg-color: #F6F6F6;
     --main-font-color: #FF6060;
 
-    --grid-gap: 50px;
+    --grid-gap: 30px;
 
-    --fs-big: 36px;
+    --fs-big: 2.5em;
     --fs-medium: 20px;
     --fs-regular: 18px;
-    --fs-small: 14px;
+    --fs-small: .7em;
     --fs-very-small: 12px;
 
     --font-weight-large: 700;
@@ -27,6 +27,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/Montserrat-VariableFont_wght.ttf);
+}
 
 html,
 body {
@@ -38,9 +42,28 @@ body {
 #root {
     display: grid;
     gap: var(--grid-gap);
+    // min-height: 100vh;
+    // grid-template-rows: auto;
+    grid-template-rows: max-content auto max-content;
     min-height: 100vh;
-    grid-template-rows: min-content 1fr min-content;
+    // grid-template-rows: min-content 1fr min-content;
     overflow: hidden;
+
+    @include for-size(tablet) {
+        --grid-gap: 15px;
+    }
+}
+
+a {
+    font-weight: 500;
+}
+
+a:hover {
+    color: #535bf2;
+}
+
+h1 {
+    font-size: var(--fs-big);
 }
 
 /* Generic Content */
@@ -58,21 +81,27 @@ img {
 
     @include apply-width-crop($max-width-content, $width-crop);
 
-    @include for-size(tablet) {
-        @include apply-width-crop($max-width-content, $width-crop-tablet);
-    }
-
     // width: min($max-width-content, calc(100% - ($width-crop * 2)));
     margin-inline: auto;
     display: grid;
-    grid-template-rows: min-content;
+    grid-template-rows: auto;
+    // grid-template-rows: min-content;
+    grid-template-rows: max-content auto;
     gap: var(--grid-gap);
 
     // height: max-content;
     // margin-bottom: var(--grid-gap);
+    @include for-size(tablet) {
+        @include apply-width-crop($max-width-content, $width-crop-tablet);
+
+        // &:not(:has(.card-container)) {
+        //     // gap: 10px;
+        // }
+    }
 }
 
 main {
     display: grid;
-    gap: var(--grid-gap);
+    // gap: var(--grid-gap);
+
 }

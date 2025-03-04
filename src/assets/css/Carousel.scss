@@ -27,7 +27,8 @@
     &__prev,
     &__next {
         position: absolute;
-        width: 80px;
+        width: 100px;
+        // width: 80px;
         height: 100%;
         top: 0;
         align-content: center;
@@ -48,11 +49,16 @@
             &:active {
                 scale: 0.8;
             }
+
+            position: absolute;
+            inset: 0;
+            align-self: center;
+            justify-self: center;
         }
     }
 
     &__prev {
-        left: 0
+        left: 0;
     }
 
     &__next {
@@ -67,8 +73,15 @@
     }
 
     @include for-size(tablet) {
+        max-height: 335px;
+
         svg {
             width: 20px;
+        }
+
+        &__prev,
+        &__next {
+            width: 50px;
         }
     }
 }

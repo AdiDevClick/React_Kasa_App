@@ -2,25 +2,28 @@
 
 /* Room modifiers */
 .main-container:has(.room) {
-    grid-template-rows: minmax(415px, max-content) max-content;
+    // grid-template-rows: auto;
+    // grid-template-rows: minmax(415px, max-content) max-content;
 
     .room {
         display: grid;
         grid-template-columns: 1fr max-content;
         gap: var(--grid-gap);
+        grid-row-gap: 20px;
 
         &__header-container {
             grid-column: 1 / 2;
             grid-row: 1;
             position: relative;
             display: grid;
-            grid-template-rows: 1fr 10px max-content 20px 1fr;
+            grid-template-rows: 1fr 10px max-content 20px max-content;
+            // grid-template-rows: 1fr 10px max-content 20px 1fr;
 
             .tags_container {
                 // grid-row: 1 / 1;
-                position: absolute;
+                // position: absolute;
                 grid-row: 5;
-                width: calc(100vw - (var(--grid-gap) * 2));
+                // width: calc(100vw - (var(--grid-gap) * 2));
                 flex-wrap: wrap !important;
                 max-width: 1440px;
             }
@@ -80,6 +83,10 @@
                 grid-template-rows: 1fr 10px max-content 20px max-content;
             }
 
+            &__title {
+                font-size: 1.5em;
+            }
+
             &__profile {
                 grid-column: auto;
                 grid-row: 2;
@@ -102,4 +109,5 @@
             flex-direction: column;
         }
     }
+
 }

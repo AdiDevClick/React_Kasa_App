@@ -1,52 +1,56 @@
 @use 'mixins' as *;
 
 /* Navbar Header */
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 40px;
+header {
+    height: max-content;
 
-    a,
-    img,
-    svg {
-        color: #000000;
-        cursor: pointer;
-        height: 100%;
-    }
-
-    .header-menu__logo {
-        height: inherit;
-        width: inherit;
-
-        path {
-            fill: var(--main-font-color);
-        }
-    }
-
-    ul {
+    nav {
         display: flex;
-        gap: 50px;
-        align-items: center;
-        min-height: 68px;
+        justify-content: space-between;
+        padding-top: 40px;
 
-        a:is(.active, :focus, :active, :hover) {
-            border-bottom: 1px solid grey;
-        }
-    }
-
-    @include for-size(tablet) {
+        a,
+        img,
         svg {
-            max-height: 50px;
+            color: #000000;
+            cursor: pointer;
+            height: 100%;
         }
 
-        a {
-            font-size: var(--fs-very-small);
-            align-content: center;
-            text-transform: uppercase;
+        .header-menu__logo {
+            height: inherit;
+            width: inherit;
+
+            path {
+                fill: var(--main-font-color);
+            }
         }
 
         ul {
-            gap: 20px;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            min-height: 68px;
+
+            a:is(.active, :focus, :active, :hover) {
+                border-bottom: 1px solid grey;
+            }
+        }
+
+        @include for-size(tablet) {
+            svg {
+                max-height: 50px;
+            }
+
+            a {
+                font-size: var(--fs-small);
+                align-content: center;
+                text-transform: uppercase;
+            }
+
+            ul {
+                gap: 20px;
+            }
         }
     }
 }

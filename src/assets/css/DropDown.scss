@@ -3,27 +3,32 @@
 /* Dropdown Component */
 .dropdowns-container {
     display: flex;
+    grid-template-columns: auto;
     gap: 40px;
     width: 80%;
-    height: 100%;
-    margin-top: 120px;
     place-self: center;
     flex-direction: column;
+    height: 100%;
 
+    /* BUTTON */
     .dropdown {
+        overflow: hidden;
+        transition: max-height 3s ease-in;
+
         &_container {
+            width: 100%;
             cursor: pointer;
             z-index: 1;
             position: relative;
-
             display: grid;
             grid-template-columns: 1fr max-content;
             background: var(--main-font-color);
             padding: 10px 20px;
             border-radius: 10px;
+            transition: transform 0.3s ease;
 
             &.open.closed {
-                &__btn {
+                .dropdown__btn {
                     transform: rotate(180deg);
                 }
             }
@@ -44,9 +49,37 @@
             transition: transform 0.3s ease;
         }
 
+        /* PARAGRAPH CONTAINER - 
+            It will manipulate the animation 
+        */
         span {
             position: relative;
+            display: block;
+            overflow: hidden;
+            width: 100%;
             top: -10px;
+            transition: transform 0.3s ease, opacity 0.5s ease, max-height 0.3s ease;
+
+            &.closed {
+                transform: translate3d(0px, -100%, 0);
+                max-height: 0;
+                opacity: 0;
+
+                @starting-style {
+                    opacity: 1;
+                    transform: translate3d(0px, 0, 0);
+                }
+            }
+
+            &.open {
+                opacity: 1;
+                max-height: 500px;
+
+                @starting-style {
+                    opacity: 0;
+                    transform: translate3d(0px, -50px, 0);
+                }
+            }
         }
 
         &__text {
@@ -72,7 +105,7 @@
 
             @starting-style {
                 opacity: 0;
-                transform: translate3d(0px, -50px, 0);
+                transform: translate3d(0px, -70px, 0);
             }
         }
     }
@@ -89,5 +122,25 @@
                 font-size: var(--fs-regular);
             }
         }
+    }
+}
+
+@keyframes clipUp {
+    from {
+        clip-path: inset(0 0 100% 0)
+    }
+
+    to {
+        clip-path: inset(0);
+    }
+}
+
+@keyframes clipDown {
+    from {
+        clip-path: inset(0);
+    }
+
+    to {
+        clip-path: inset(0 0 100% 0);
     }
 }
