@@ -1,21 +1,23 @@
-import PropTypes from "prop-types";
-import { useId } from "react";
-import "assets/css/Stars.scss";
+import PropTypes from 'prop-types';
+import { useId } from 'react';
+import 'assets/css/Stars.scss';
+
+const range = 5;
 
 /**
  * Render le rating utilisateur sur 5
  * @param {object} param0
  * @param {number|string} param0.rating
- * @returns
+ * @returns {JSX.Element} - L'élement display à l'utilisateur
+ * contenant toutes les étoiles actives/non actives
  */
 export function Rating({ rating }) {
-    const range = 5;
     const stars = [];
     for (let i = 1; i <= range; i++) {
         const id = useId();
         stars.push(
             <svg
-                className={i <= rating ? "star active" : "star"}
+                className={i <= rating ? 'star active' : 'star'}
                 key={id}
                 width="25"
                 height="24"
