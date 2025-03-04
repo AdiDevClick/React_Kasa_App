@@ -1,13 +1,64 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="fr">
+
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" href="/src/assets/images/Kasa_icon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
+    <meta name="description" content="Kasa - Louez votre appartements de particuliers à particuliers.">
+    <meta name="robots" content="index, follow">
+    <!-- Card meta pour Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Kasa">
+    <meta name="twitter:title" content="Kasa - Chez vous, partout et ailleurs">
+    <meta name="twitter:description" content="Kasa - Louez votre appartements de particuliers à particuliers.">
+    <meta name="twitter:url" content="https://kasa.fr">
+    <!-- Twitter summary card avec image large de 280x150px -->
+    <meta name="twitter:image:src" content="https://kasa.fr/assets/images/Kasa_icon.png">
+    <!-- Open Graph meta pour Facebook -->
+    <meta property="og:title" content="Kasa - Chez vous, partout et ailleurs">
+    <meta property="og:url" content="https://kasa.fr">
+    <meta property="og:image" content="https://kasa.fr/assets/images/Kasa_icon.png">
+    <meta property="og:description" content="Kasa - Louez votre appartements de particuliers à particuliers.">
+    <meta property="og:site_name" content="Nina Carducci">
+    <meta property="og:type" content="website">
+    <title>Kasa - Chez vous, partout et ailleurs</title>
+    <script type="application/ld+json">
+        { 
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Kasa",
+            "url": "https://kasa.fr",
+            "image": "https://kasa.fr/assets/images/Kasa_icon.png",
+            "worksFor":
+                { 
+                    "@type": "Organization",
+                    "name": "Kasa",
+                    "image": "https://kasa.fr/assets/images/Kasa_icon.png",
+                    "address":
+                        {
+                            "@type": "PostalAddress",
+                            "streetAddress": "68 avenue Alsace-Lorraine",
+                            "addressLocality": "Toulouse",
+                            "postalCode": "31000",
+                            "addressCountry": "FR"
+                        },
+                    "telephone": "0556677889",
+                    "openingHours": "Mo-Fr 10:00-19:00",
+                    "sameAs":
+                    [
+                        "https://www.facebook.com/kasa.photo/?hl=fr",
+                        "https://www.instagram.com/kasa.photo/?hl=fr",
+                        "https://www.twitter.com/kasa.photo/?hl=fr"
+                    ]
+                } 
+        }
+    </script>
+</head>
+
+<body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-  </body>
+</body>
+
 </html>
