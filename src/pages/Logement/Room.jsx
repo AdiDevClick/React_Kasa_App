@@ -86,12 +86,9 @@ export function Room() {
 
     return (
         <>
-            {/* {!isLoading && fetchedData && ( */}
             <section className="room_header carousel">
                 <Carousel images={fetchedData.pictures} />
             </section>
-            {/* )} */}
-            {/* {!isLoading && fetchedData && ( */}
             <section className="room">
                 <div className="room__profile profile_container">
                     <Profile
@@ -111,7 +108,6 @@ export function Room() {
                     ))}
                 </div>
             </section>
-            {/* )} */}
         </>
     );
 }
