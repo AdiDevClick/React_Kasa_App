@@ -27,6 +27,8 @@ export function AboutUs() {
         let i = 1;
 
         return () => {
+            // Transform texts key/value into
+            // an array title/text
             for (const [item, value] of Object.entries(texts)) {
                 setDrawerItems((prevItems) => [
                     ...prevItems,
