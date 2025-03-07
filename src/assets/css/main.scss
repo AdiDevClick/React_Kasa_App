@@ -42,11 +42,8 @@ body {
 #root {
     display: grid;
     gap: var(--grid-gap);
-    // min-height: 100vh;
-    // grid-template-rows: auto;
     grid-template-rows: max-content auto max-content;
     min-height: 100vh;
-    // grid-template-rows: min-content 1fr min-content;
     overflow: hidden;
 
     @include for-size(tablet) {
@@ -81,27 +78,17 @@ img {
 
     @include apply-width-crop($max-width-content, $width-crop);
 
-    // width: min($max-width-content, calc(100% - ($width-crop * 2)));
     margin-inline: auto;
     display: grid;
     grid-template-rows: auto;
-    // grid-template-rows: min-content;
     grid-template-rows: max-content auto;
     gap: var(--grid-gap);
 
-    // height: max-content;
-    // margin-bottom: var(--grid-gap);
     @include for-size(tablet) {
         @include apply-width-crop($max-width-content, $width-crop-tablet);
-
-        // &:not(:has(.card-container)) {
-        //     // gap: 10px;
-        // }
     }
 }
 
 main {
     display: grid;
-    // gap: var(--grid-gap);
-
 }

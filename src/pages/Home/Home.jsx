@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Banner } from '../../components/headers/banner/Banner.jsx';
 import 'assets/css/Cards.scss';
 import headerImg from 'assets/images/rivage-S.webp';
