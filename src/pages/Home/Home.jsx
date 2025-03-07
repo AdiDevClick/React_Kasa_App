@@ -4,6 +4,7 @@ import 'assets/css/Cards.scss';
 import headerImg from 'assets/images/rivage-S.webp';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.jsx';
 import { CardsContainer } from '../../components/cards/CardsContainer.jsx';
+import datas from '../../data/datas.json';
 
 /**
  * Affiche la page Accueil -
@@ -11,7 +12,7 @@ import { CardsContainer } from '../../components/cards/CardsContainer.jsx';
  * @param {{}} param0.datas - L'objet contenant la SQL Query
  * @returns
  */
-export function Home({ datas }) {
+export function Home() {
     useDocumentTitle('Chez vous, partout et ailleurs');
     return (
         <>
