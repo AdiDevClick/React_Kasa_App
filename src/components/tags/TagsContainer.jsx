@@ -9,6 +9,7 @@ import { Tags } from './Tags.jsx';
  */
 export function TagsContainer({ datas }) {
     Array.isArray(datas) ? datas : [datas];
+
     return (
         <ul className="tags_container">
             {datas.map((text, index) => (
