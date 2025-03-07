@@ -9,7 +9,7 @@ import { CarouselButton } from './CarouselButton.jsx';
  * @param {boolean} [param0.infinite = false] - False par défaut - Active l'infinite slide.
  * @returns {JSX.Element}
  */
-export function RenderCarousel({ images, infinite = true }) {
+export function Carousel({ images, infinite = true }) {
     const [activeSlide, setActiveSlide] = useState(0);
     const carouselRef = useRef();
 
@@ -152,7 +152,7 @@ function displayButtons(
     return activeButtons;
 }
 
-RenderCarousel.propTypes = {
+Carousel.propTypes = {
     images: PropTypes.array.isRequired,
     infinite: PropTypes.bool,
 };
