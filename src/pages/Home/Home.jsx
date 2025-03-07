@@ -24,12 +24,3 @@ export function Home() {
         </>
     );
 }
-
-Home.propTypes = {
-    datas: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-        })
-    ).isRequired,
-};
