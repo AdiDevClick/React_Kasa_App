@@ -13,7 +13,6 @@ import { PageError } from './pages/Error/PageError.jsx';
 import { Footer } from './components/footer/Footer.jsx';
 import { AboutUs } from './pages/About/About.jsx';
 import { Home } from './pages/Home/Home.jsx';
-import datas from './data/datas.json';
 import { Room } from './pages/Logement/Room.jsx';
 
 const router = createBrowserRouter([
@@ -26,7 +25,7 @@ const router = createBrowserRouter([
                 index: true,
                 element: (
                     <App>
-                        <Home datas={datas} />
+                        <Home />
                     </App>
                 ),
             },
