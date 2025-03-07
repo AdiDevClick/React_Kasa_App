@@ -4,7 +4,7 @@ import { DropDown } from '../../components/dropdowns/Dropdown.jsx';
 import { Profile } from '../../components/profile/Profile.jsx';
 import { Rating } from '../../components/ratings/Ratings.jsx';
 import { useFetch } from '../../hooks/useFetch.jsx';
-import { RenderCarousel } from '../../components/carousel/Carousel.jsx';
+import { Carousel } from '../../components/carousel/Carousel.jsx';
 import { TagsContainer } from '../../components/tags/TagsContainer.jsx';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.jsx';
 import 'assets/css/Tags.scss';
@@ -26,6 +26,7 @@ const dropdownTitles = {
 export function Room() {
     let ids = useId();
     const { id } = useParams();
+
     const filteredData = JSONDatas.filter((room) => room.id === id);
     // let { filteredData, isLoading, errors } = useFetch(
     //     'https://jsonplaceholder.typicode.com/todos/1'
@@ -48,6 +49,8 @@ export function Room() {
     useEffect(() => {
         if (fetchedData) {
             let i = 0;
+            // Transform description/equipments into
+            // an array title/text
             for (const [item, value] of Object.entries(fetchedData)) {
                 if (dropdownTitles[item]) {
                     setDrawerItem((prevItems) => [
@@ -78,39 +81,37 @@ export function Room() {
     }
 
     if (errors) {
-        return <Navigate to={'/error/page'} replace />;
+        return <Navigate to={'/error/page'} replace={true} />;
     }
 
     return (
         <>
-            {!isLoading && fetchedData && (
-                <section className="room_header carousel">
-                    <RenderCarousel images={fetchedData.pictures} />
-                </section>
-            )}
-            {!isLoading && fetchedData && (
-                <section className="room">
-                    <div className="room__profile profile_container">
-                        <Profile
-                            name={fetchedData.host.name}
-                            picture={fetchedData.host.picture}
-                        />
-                        <Rating rating={fetchedData.rating} />
-                    </div>
-                    <div className="room__header-container">
-                        <h1 className="room__title">{fetchedData.title}</h1>
-                        <h2 className="room__subtitle">
-                            {fetchedData.location}
-                        </h2>
-                        <TagsContainer datas={fetchedData.tags} />
-                    </div>
-                    <div className="dropdowns-container">
-                        {drawerItems.map((item) => (
-                            <DropDown key={item.id} item={item} />
-                        ))}
-                    </div>
-                </section>
-            )}
+            {/* {!isLoading && fetchedData && ( */}
+            <section className="room_header carousel">
+                <Carousel images={fetchedData.pictures} />
+            </section>
+            {/* )} */}
+            {/* {!isLoading && fetchedData && ( */}
+            <section className="room">
+                <div className="room__profile profile_container">
+                    <Profile
+                        name={fetchedData.host.name}
+                        picture={fetchedData.host.picture}
+                    />
+                    <Rating rating={fetchedData.rating} />
+                </div>
+                <div className="room__header-container">
+                    <h1 className="room__title">{fetchedData.title}</h1>
+                    <h2 className="room__subtitle">{fetchedData.location}</h2>
+                    <TagsContainer datas={fetchedData.tags} />
+                </div>
+                <div className="dropdowns-container">
+                    {drawerItems.map((item) => (
+                        <DropDown key={item.id} item={item} />
+                    ))}
+                </div>
+            </section>
+            {/* )} */}
         </>
     );
 }
