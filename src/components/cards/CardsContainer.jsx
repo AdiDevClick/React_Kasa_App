@@ -5,13 +5,13 @@ import { Card } from './Card.jsx';
  * Affiche un container pour les cards
  * @param {object} param0
  * @param {string} param0.className - Le nom de la class CSS
- * @param {array} param0.cards - Un Array d'objets pour
+ * @param {array} param0.datas - Un Array d'objets pour
  * @returns {JSX.Element}
  */
-export function CardsContainer({ className, cards }) {
+export function CardsContainer({ className, datas }) {
     return (
         <section className={className}>
-            {cards.map((element) => (
+            {datas.map((element) => (
                 <Card
                     to={'/' + element.id}
                     key={element.id}
@@ -24,7 +24,7 @@ export function CardsContainer({ className, cards }) {
 
 CardsContainer.propTypes = {
     className: PropTypes.string.isRequired,
-    cards: PropTypes.arrayOf(
+    datas: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,

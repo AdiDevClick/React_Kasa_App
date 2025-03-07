@@ -19,7 +19,7 @@ export function Home() {
                 Chez vous, partout et ailleurs
             </Banner>
 
-            <CardsContainer className="card-container" cards={datas} />
+            <CardsContainer className="card-container" datas={datas} />
         </>
     );
 }
