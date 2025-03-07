@@ -25,7 +25,6 @@ export function DropDown({ item }) {
 
         // Plays button's animation
         e.currentTarget.classList.toggle('closed');
-
         // Opacity fadein for the paragraphs
         if (active) {
             paragraphsRef.current.addEventListener(
