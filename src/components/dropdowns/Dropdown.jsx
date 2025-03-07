@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import { useId, useRef, useState } from 'react';
 import 'assets/css/DropDown.scss';
-import arrow from 'assets/images/dropdown-arrow.svg';
 import { DropdownParagraph } from './DropdownParagraph.jsx';
-import { DropdownButton } from './DropdownButton.jsx';
+import { DropdownContainer } from './DropdownContainer.jsx';
 
 /**
  * Affiche un dropdown avec un bouton sur la droite -
+ * Le span est à part du conteneur -
  * Une transition s'affichera quand l'utilisateur active le drawer -
  * @param {object} param0
- * @param {object} param0.item - Object contenant toutes les propriétés
+ * @param {object} param0.item - Object contenant toutes les propriétés title/text
  * @returns {JSX.Element}
  */
 export function DropDown({ item }) {
@@ -20,7 +20,7 @@ export function DropDown({ item }) {
     const paragraphsRef = useRef();
 
     /** @type {PointerEvent} */
-    const handleClick = (e) => {
+    const onHandleClick = (e) => {
         setActive((click) => !click);
 
         // Plays button's animation
@@ -41,13 +41,10 @@ export function DropDown({ item }) {
 
     return (
         <div className="dropdown">
-            <div
-                className="dropdown_container open closed"
-                onClick={handleClick}
-            >
-                <h2 className="dropdown__title">{item.title}</h2>
-                <DropdownButton ariaId={id} isActive={active} arrow={arrow} />
-            </div>
+            <DropdownContainer
+                handleClick={(e) => onHandleClick(e)}
+                elements={{ ariaId: id, isActive: active, title: item.title }}
+            />
 
             <span
                 ref={paragraphsRef}
