@@ -1,3 +1,10 @@
+/**
+ * Les différentes mixins de l'application
+ * Créé par Adrien Quijo
+ *
+ * V 1.0.0
+ */
+
 // MEDIA QUERIES 
 @mixin for-size($media) {
     @if $media ==mobile {
