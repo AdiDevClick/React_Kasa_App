@@ -1,3 +1,11 @@
+/**
+ * @description Fichier de la page d'appartements
+ * @module Room
+ * Créé par Adrien Quijo
+ *
+ * V 1.0.0
+ */
+
 import { Navigate, useParams } from 'react-router';
 import JSONDatas from '../../data/datas.json';
 import { DropDown } from '../../components/dropdowns/Dropdown.jsx';

@@ -1,4 +1,4 @@
-## Par Adrien Quijo pour OC DevWeb
+## Par Adrien Quijo pour OC DevWeb Formation
 
 # Initialisation du Projet 
 - Vite : `npm create vite@latest Kasa-app -- --template react`
@@ -27,3 +27,4 @@ Erreur générique actuelle : <br>
             <i>{error.statusText || error.message}</i>
         </p>
     </div>
+
