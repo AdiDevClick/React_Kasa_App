@@ -1,3 +1,9 @@
+/**
+ * @description Fichier principal de l'application React
+ * Créé par Adrien Quijo
+ *
+ * V 1.0.0
+ */
 import { createRoot } from 'react-dom/client';
 import 'assets/css/NavHeader.scss';
 import App from './pages/App.jsx';

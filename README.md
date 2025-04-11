@@ -1,3 +1,5 @@
+## Par Adrien Quijo pour OC DevWeb
+
 # Initialisation du Projet 
 - Vite : `npm create vite@latest Kasa-app -- --template react`
 - Sass : `npm install sass`
